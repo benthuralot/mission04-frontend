@@ -7,7 +7,7 @@
   background-color: #f0f0f0;
 }
 
-.name-form, .input-form {
+.input-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
   max-width: 600px;
 }
 
-.name-form input, .input-form textarea {
+.input-form textarea {
   width: 100%;
   padding: 15px;
   border-radius: 10px;
@@ -28,7 +28,7 @@
   transition: border-color 0.3s ease;
 }
 
-.name-form input:focus, .input-form textarea:focus {
+.input-form textarea:focus {
   border-color: #007bff;
   outline: none;
 }
@@ -68,6 +68,9 @@ button:hover {
   padding: 10px;
   border-radius: 5px;
   color: #333;
+  background-color: #f8f8f8;
+  max-width: 100%;
+  word-wrap: break-word; /* Ensure long words break to fit inside the bubble */
 }
 
 .message.user {
@@ -80,15 +83,10 @@ button:hover {
   align-self: flex-start;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
 .message-content {
-  max-width: 80%;
+  max-width: 100%;
+  padding: 10px; /* Add padding to ensure text is not hugging the left side */
+  word-wrap: break-word; /* Ensure long words break to fit inside the bubble */
 }
 
 .recommendation {
@@ -97,6 +95,7 @@ button:hover {
   border-radius: 5px;
   margin-bottom: 10px;
   color: #333;
+  word-wrap: break-word; /* Ensure long words break to fit inside the bubble */
 }
 
 .recommendation h3 {

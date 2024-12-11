@@ -38,15 +38,25 @@ function App() {
     setInput('');
   };
 
-  const formatMessage = (message) => {
-    if (message.sender === 'ai') {
-      return (
-        <div className="message ai">
-          <ReactMarkdown>{message.text}</ReactMarkdown>
-        </div>
-      );
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
     }
-    return <div className={`message ${message.sender}`}>{message.text}</div>;
+  };
+
+  const formatMessage = (message) => {
+    return (
+      <div className={`message ${message.sender}`}>
+        <div className="message-content">
+          {message.sender === 'ai' ? (
+            <ReactMarkdown>{message.text}</ReactMarkdown>
+          ) : (
+            message.text
+          )}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -62,7 +72,9 @@ function App() {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Type your response..."
+          className="input-textarea"
         />
         <button type="submit">Submit</button>
       </form>
